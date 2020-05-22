@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace EF.Models
+
+namespace Wyklad10.Models
 {
     public class HospitalContext : DbContext
     {
@@ -9,17 +10,18 @@ namespace EF.Models
 
         }
 
-        public virtual DbSet<Doctor> Doctor { get; set; }
-        public virtual DbSet<Patient> Patient { get; set; }
-        public virtual DbSet<Prescription> Prescription { get; set; }
-        public virtual DbSet<PrescriptionMedicament> PrescriptionMedicament { get; set; }
-        public virtual DbSet<Medicament> Medicament { get; set; }
+        public virtual DbSet<Doctor> doctor { get; set; }
+        public virtual DbSet<Patient> patient { get; set; }
+        public virtual DbSet<Prescription> prescription { get; set; }
+        public virtual DbSet<PrescriptionMedicament> prescriptionMedicament { get; set; }
+        public virtual DbSet<Medicament> medicament { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Doctor>(e =>
             {
                 e.HasKey(x => x.IdDoctor).HasName("Doctor_PK");
+                //.ValueGeneratedNever(); aby nie było indetity
                 //Nie podajac dalej nic wszystkie parametry moga byc null i maja MAX value
                 e.Property(x => x.FirstName).HasMaxLength(100).IsRequired();
                 e.Property(x => x.LastName).HasMaxLength(100).IsRequired();

@@ -2,18 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EF.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Wyklad10.Models;
 
-namespace EF
+namespace Wyklad10
 {
     public class Startup
     {
@@ -28,7 +27,6 @@ namespace EF
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HospitalContext>(db => db.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
-
             services.AddControllers();
         }
 
@@ -39,8 +37,6 @@ namespace EF
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 

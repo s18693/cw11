@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EF.Models
+namespace Wyklad10.Models
 {
     public partial class Medicament
     {
